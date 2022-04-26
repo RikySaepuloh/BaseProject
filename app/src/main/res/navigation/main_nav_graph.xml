@@ -9,5 +9,19 @@
         android:name="id.riky.baseproject.ui.main.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_fragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="id.riky.baseproject.ui.main.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile" >
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="id.riky.baseproject.ui.detail.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail"/>
 </navigation>

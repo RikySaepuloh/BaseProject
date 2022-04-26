@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -18,9 +19,16 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "String", 'BASE_URL', "\"https://api.simkug.com/api/\""
+            buildConfigField "String", 'IMAGE_BASE_URL', "\"https://apidevkug.yakestelkom.or.id/api/bdh-auth/storage-simlog/\""
+//            debuggable false
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", 'BASE_URL', "\"https://api.simkug.com/api/\""
+            buildConfigField "String", 'IMAGE_BASE_URL', "\"https://apinewsimkug.yakestelkom.or.id/api/bdh-auth/storage-simlog/\""
         }
     }
     compileOptions {
@@ -34,10 +42,22 @@ android {
     viewBinding {
         enabled true
     }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'java/id.riky.baseproject/data/source/local/LocalDataSource.kt'
+        exclude 'java/id.riky.baseproject/data/source/local/room/RecipeDao.kt'
+        exclude 'java/id.riky.baseproject/data/source/local/room/RecipeDatabase.kt'
+    }
 }
 
 dependencies {
     def nav_version = "2.4.2"
+    def room_version = "2.3.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -72,6 +92,12 @@ dependencies {
     implementation "io.insert-koin:koin-android-viewmodel:2.2.3"
 
     // Lifecycle Livedata Viewmodel
-    api "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
+
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 }
