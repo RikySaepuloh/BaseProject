@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import id.riky.baseproject.databinding.FragmentHomeBinding
+import id.riky.baseproject.databinding.FragmentProfileBinding
 
 
 class ProfileFragment : Fragment(){
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
     override fun onDestroyView() {
@@ -21,7 +22,7 @@ class ProfileFragment : Fragment(){
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
     }
