@@ -53,6 +53,9 @@ android {
         exclude 'java/id.riky.baseproject/data/source/local/room/RecipeDao.kt'
         exclude 'java/id.riky.baseproject/data/source/local/room/RecipeDatabase.kt'
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
