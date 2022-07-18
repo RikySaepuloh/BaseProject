@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     app:cardElevation="0dp"
-    app:strokeColor="@color/colorPrimary"
+    app:strokeColor="@color/colorGold"
     app:strokeWidth="1dp"
     android:layout_marginTop="10dp"
     app:cardCornerRadius="6dp"
@@ -16,13 +16,47 @@
     android:layout_marginBottom="10dp"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/judul"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:layout_marginEnd="20dp">
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="Lapu-Lapu"/>
+        <ImageView
+            android:id="@+id/gambar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Classification :"/>
+        <TextView
+            android:id="@+id/kelas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Role :"/>
+        <TextView
+            android:id="@+id/role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
+
 
 </com.google.android.material.card.MaterialCardView>

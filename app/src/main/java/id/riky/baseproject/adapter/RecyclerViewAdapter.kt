@@ -5,16 +5,18 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import id.riky.baseproject.databinding.LayoutItemBinding
+import id.riky.baseproject.domain.model.ModelHeroes
 import id.riky.baseproject.ui.detail.DetailActivity
 
 
 class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.DataPengajuanViewHolder>() {
-    private var mFilteredList= mutableListOf<String>()
-    private var mArrayList= mutableListOf<String>()
+    private var mFilteredList= mutableListOf<ModelHeroes>()
+    private var mArrayList= mutableListOf<ModelHeroes>()
     lateinit var context: Context
 
-    fun initData(data:List<String>){
+    fun initData(data:List<ModelHeroes>){
         mFilteredList.clear()
         mArrayList.clear()
         mFilteredList.addAll(data)
@@ -44,7 +46,11 @@ class RecyclerViewAdapter : RecyclerView.Adapter<RecyclerViewAdapter.DataPengaju
     override fun onBindViewHolder(holder: DataPengajuanViewHolder, position: Int) {
         with(holder){
             with(mFilteredList[position]){
-                binding.judul.text = mFilteredList[position]
+                // nama, role, kelas, data gambar diambil dari array model
+                binding.judul.text = nama
+                binding.role.text = role
+                binding.kelas.text = kelas
+                Glide.with(context).load(imageLink).into(binding.gambar)
 
                 // Perintah saat klik item
                 binding.root.setOnClickListener {
